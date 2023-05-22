@@ -6,10 +6,13 @@ namespace DesafioProjetoHospedagem.Models
         public Suite Suite { get; set; }
         public int DiasReservados { get; set; }
 
-        public Reserva() { }
+        public Reserva() { 
+            Hospedes = new List<Pessoa>();
+        }
 
         public Reserva(int diasReservados)
         {
+            Hospedes = new List<Pessoa>();
             DiasReservados = diasReservados;
         }
 
@@ -17,14 +20,14 @@ namespace DesafioProjetoHospedagem.Models
         {
             // TODO: Verificar se a capacidade é maior ou igual ao número de hóspedes sendo recebido
             // *IMPLEMENTE AQUI*
-            if (true)
+            if (hospedes.Count<=Suite.Capacidade)
             {
                 Hospedes = hospedes;
             }
             else
             {
                 // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
-                // *IMPLEMENTE AQUI*
+                throw new InvalidOperationException("Quantidade de hospedes supera a capacidade");
             }
         }
 
